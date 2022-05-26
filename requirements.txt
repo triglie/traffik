@@ -1,0 +1,7 @@
+numpy
+pytorch==1.11
+torchvision
+python-opencv
+tqdm
+h5py
+moviepy
