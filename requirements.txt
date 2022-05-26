@@ -1,7 +1,9 @@
 numpy
-pytorch==1.11
+# pytorch - Install torch manually. 
 torchvision
-python-opencv
+opencv-python
 tqdm
 h5py
 moviepy
+numba
+click

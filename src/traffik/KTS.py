@@ -100,6 +100,7 @@ def calc_scatters(K):
 
     return calc_scatters2(K1, K2, scatters, n)
 
+
 @jit(nopython=True)
 def calc_scatters2(K1, K2, scatters, n):
     for i in range(n):
@@ -107,6 +108,7 @@ def calc_scatters2(K1, K2, scatters, n):
             scatters[i,j] = K1[j+1]-K1[i] - (K2[j+1,j+1]+K2[i,i]-K2[j+1,i]-K2[i,j+1])/(j-i+1)
 
     return scatters
+
 
 def cpd_nonlin(K, ncp, lmin=1, lmax=100000, backtrack=True, verbose=True,
     out_scatters=None):
@@ -166,6 +168,7 @@ def cpd_nonlin(K, ncp, lmin=1, lmax=100000, backtrack=True, verbose=True,
     scores[scores > 1e99] = np.inf
     return cps, scores
     
+
 @jit(nopython=True)
 def cpd_nonlin2(m, n, p, I, J, lmin, lmax, backtrack):
     for k in range(1, m+1):
