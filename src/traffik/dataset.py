@@ -117,11 +117,11 @@ class DatasetGenerator:
 
     def _get_change_points(self, videofeat, nframes, fps):
         """ Extract the changepoints from the video features """
-        n = n_frame / fps
+        n = nframes / fps
         m = int(np.ceil(n/2.0))
         K = np.dot(videofeat, videofeat.T)
         change_points, _ = cpd_auto(K, m, 1)
-        change_points = np.concatenate(([0], change_points, [n_frame-1]))
+        change_points = np.concatenate(([0], change_points, [nframes-1]))
         temp_change_points = []
         for idx in range(len(change_points)-1):
             segment = [change_points[idx], change_points[idx+1]-1]
@@ -132,6 +132,6 @@ class DatasetGenerator:
         temp_n_frame_per_seg = []
         for change_points_idx in range(len(change_points)):
             n_frame = change_points[change_points_idx][1] - change_points[change_points_idx][0]
-            temp_n_frame_per_seg.append(n_frame)
+            temp_n_frame_per_seg.append(nframes)
         n_frame_per_seg = np.array(list(temp_n_frame_per_seg))
         return change_points, n_frame_per_seg
