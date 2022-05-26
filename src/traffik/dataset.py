@@ -66,6 +66,7 @@ class DatasetGenerator:
             fps      = int(videocap.get(cv2.CAP_PROP_FPS))
 
             usersumm = build_frame_binary_array(nframes, extract_action_frames(csvpath))
+            usersumm = np.array([ usersumm ]) # must be a matrix of users summaries.
             gtscore     = []
             picks       = []
             videofeat       = np.empty((0, 1024), float)
@@ -84,14 +85,14 @@ class DatasetGenerator:
             videocap.release()
             cps, nfpseg = self._get_change_points(videofeat, nframes, fps)
             videoname = f'video_{video_idx + 1}'
-            self.h5file[videoname]['features'] = videofeat_train
+            self.h5file[videoname]['features'] = np.array(videofeat_train, dtype=float)
             self.h5file[videoname]['picks'] = np.array(picks)
             self.h5file[videoname]['n_frames'] = nframes
             self.h5file[videoname]['fps'] = fps
             self.h5file[videoname]['change_points'] = cps
             self.h5file[videoname]['n_frame_per_seg'] = nfpseg
-            self.h5file[videoname]['user_summary'] = usersumm
-            self.h5file[videoname]['gtscore'] = gtscore
+            self.h5file[videoname]['user_summary'] = np.array(usersumm, dtype=float)
+            self.h5file[videoname]['gtscore'] = np.array(gtscore, dtype=float)
 
         self.h5file.close()
 
@@ -105,7 +106,7 @@ class DatasetGenerator:
             summary, so the ground truth score is 1 if the object is in the 
             scene, 0 otherwise. 
         """
-        return usersumm[frameidx]
+        return usersumm[0][frameidx]
 
 
     def _extract_features(self, frame):
