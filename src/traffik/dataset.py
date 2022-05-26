@@ -84,15 +84,15 @@ class DatasetGenerator:
             videocap.release()
             cps, nfpseg = self._get_change_points(videofeat, nframes, fps)
             videoname = f'video_{video_idx + 1}'
-            self.h5_file[videoname]['features'] = videofeat_train
-            self.h5_file[videoname]['picks'] = np.array(picks)
-            self.h5_file[videoname]['n_frames'] = nframes
-            self.h5_file[videoname]['fps'] = fps
-            self.h5_file[videoname]['change_points'] = cps
-            self.h5_file[videoname]['n_frame_per_seg'] = nfpseg
-            self.h5_file[videoname]['user_summary'] = usersumm
-            self.h5_file[videoname]['gtscore'] = gtscore
-        
+            self.h5file[videoname]['features'] = videofeat_train
+            self.h5file[videoname]['picks'] = np.array(picks)
+            self.h5file[videoname]['n_frames'] = nframes
+            self.h5file[videoname]['fps'] = fps
+            self.h5file[videoname]['change_points'] = cps
+            self.h5file[videoname]['n_frame_per_seg'] = nfpseg
+            self.h5file[videoname]['user_summary'] = usersumm
+            self.h5file[videoname]['gtscore'] = gtscore
+
         self.h5file.close()
 
 
