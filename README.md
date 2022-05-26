@@ -1,4 +1,7 @@
 # traffik
+
+> All the credit for the dataset generation algorithm goes to [SinDongHwan repository](https://github.com/SinDongHwan/pytorch-vsumm-reinforce) 🙏🙏🙏
+
 Traffik - video summarization artificial dataset 🚗
 
 Install `pytorch` separately and then install the other dependencies:
