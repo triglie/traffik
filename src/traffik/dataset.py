@@ -133,6 +133,6 @@ class DatasetGenerator:
         temp_n_frame_per_seg = []
         for change_points_idx in range(len(change_points)):
             n_frame = change_points[change_points_idx][1] - change_points[change_points_idx][0]
-            temp_n_frame_per_seg.append(nframes)
+            temp_n_frame_per_seg.append(n_frame)
         n_frame_per_seg = np.array(list(temp_n_frame_per_seg))
         return change_points, n_frame_per_seg
