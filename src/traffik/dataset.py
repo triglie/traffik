@@ -56,7 +56,7 @@ class DatasetGenerator:
 
     def generate(self):
         """ Generate the dataset and store into HDF5 file. """
-        for video_idx, video_filename in enumerate(tqdm(self.videolist)):
+        for video_idx, video_filename in enumerate(self.videolist):
             print(f'processing video {video_filename}')
             videopath = os.path.join(self.sourcepath, video_filename)
             csvpath   = os.path.join(self.sourcepath, self.csvlist[video_idx])
